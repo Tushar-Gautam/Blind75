@@ -57,15 +57,14 @@ class Solution {
 
 //Recursive solution
 class Solution {
-    public ListNode reverseList(ListNode head) {
-        if(head==null || head.next==null){
-            return head;
-        }
-        ListNode newHead = reverseList(head.next);
-        ListNode headNext = head.next;
-        headNext.next = head;
-        head.next = null;
-        
-        return newHead;
+      public ListNode reverseList(ListNode head) {
+        return helper(head, null);
+    }
+    
+    public ListNode helper(ListNode head, ListNode prev){
+        if(head == null) return prev;
+        ListNode next = head.next;
+        head.next = prev;
+        return helper(next, head); // next is our new Head and head is our prev
     }
 }
